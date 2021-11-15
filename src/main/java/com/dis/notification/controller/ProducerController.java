@@ -1,6 +1,6 @@
 package com.dis.notification.controller;
 
-import com.dis.notification.domain.User;
+import com.dis.notification.domain.Notification;
 import com.dis.notification.service.RabbitMqSender;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -23,9 +23,9 @@ public class ProducerController {
     @Value("${app.message}")
     private String message;
 
-    @PostMapping(value = "user")
-    public String publishUserDetails(@RequestBody User user) {
-        rabbitMqSender.send(user);
+    @PostMapping(value = "notification")
+    public String publishUserDetails(@RequestBody Notification notification) {
+        rabbitMqSender.send(notification);
         return message;
     }
 }
